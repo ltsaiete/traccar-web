@@ -8,8 +8,8 @@ export default defineConfig(() => ({
   server: {
     port: 3000,
     proxy: {
-      '/api/socket': 'ws://localhost:8082',
-      '/api': 'http://localhost:8082',
+      '/api/socket': 'ws://tracker.zitronica.co.mz:8082',
+      '/api': 'http://tracker.zitronica.co.mz:8082',
     },
   },
   build: {
@@ -26,9 +26,9 @@ export default defineConfig(() => ({
         globPatterns: ['**/*.{js,css,html,woff,woff2,mp3}'],
       },
       manifest: {
-        short_name: '${title}',
-        name: '${description}',
-        theme_color: '${colorPrimary}',
+        short_name: 'ZiTracker',
+        name: 'ZiTracker',
+        theme_color: '#471e1e',
         icons: [
           {
             src: 'pwa-64x64.png',
