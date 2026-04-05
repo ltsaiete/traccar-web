@@ -36,7 +36,8 @@ const useStyles = makeStyles()((theme) => ({
   },
 }));
 
-const hiddenAttributes = { ignition: 1, odometer: 1, speed: 1 };
+const hiddenAttributes = { odometer: 1, speed: 1, rssi: 1, blocked: 1 };
+const renamedAttributes = { ignition: { attribute: 'tampAlert', name: 'Tamp alert' } };
 
 const PositionPage = () => {
   const { classes } = useStyles();
@@ -117,9 +118,9 @@ const PositionPage = () => {
                     }
                     return (
                       <TableRow key={attribute}>
-                        <TableCell>{attribute}</TableCell>
+                        <TableCell>{renamedAttributes[attribute] ? renamedAttributes[attribute].attribute : attribute}</TableCell>
                         <TableCell>
-                          <strong>{positionAttributes[attribute]?.name}</strong>
+                          {renamedAttributes[attribute] ? renamedAttributes[attribute].name : <strong>{positionAttributes[attribute]?.name}</strong>}
                         </TableCell>
                         <TableCell>
                           <PositionValue position={item} attribute={attribute} />

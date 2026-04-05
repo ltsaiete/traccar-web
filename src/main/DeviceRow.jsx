@@ -160,7 +160,7 @@ const DeviceRow = ({ devices, index, style }) => {
                   {position.attributes.ignition ? (
                     <EngineIcon width={20} height={20} className={classes.success} />
                   ) : (
-                    <EngineIcon width={20} height={20} className={classes.neutral} />
+                    <EngineIcon width={20} height={20} className={classes.neutral} /> 
                   )}
                 </IconButton>
               </Tooltip>
