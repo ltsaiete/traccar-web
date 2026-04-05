@@ -36,6 +36,8 @@ const useStyles = makeStyles()((theme) => ({
   },
 }));
 
+const hiddenAttributes = { ignition: 1, odometer: 1, speed: 1 };
+
 const PositionPage = () => {
   const { classes } = useStyles();
   const navigate = useNavigate();
@@ -92,29 +94,39 @@ const PositionPage = () => {
                 {item &&
                   Object.getOwnPropertyNames(item)
                     .filter((it) => it !== 'attributes')
-                    .map((property) => (
-                      <TableRow key={property}>
-                        <TableCell>{property}</TableCell>
+                    .map((property) => {
+                      if (hiddenAttributes[property]) {
+                        return null;
+                      }
+                      return (
+                        <TableRow key={property}>
+                          <TableCell>{property}</TableCell>
+                          <TableCell>
+                            <strong>{positionAttributes[property]?.name}</strong>
+                          </TableCell>
+                          <TableCell>
+                            <PositionValue position={item} property={property} />
+                          </TableCell>
+                        </TableRow>
+                      )
+                    })}
+                {item &&
+                  Object.getOwnPropertyNames(item.attributes).map((attribute) => {
+                    if (hiddenAttributes[attribute]) {
+                      return null;
+                    }
+                    return (
+                      <TableRow key={attribute}>
+                        <TableCell>{attribute}</TableCell>
                         <TableCell>
-                          <strong>{positionAttributes[property]?.name}</strong>
+                          <strong>{positionAttributes[attribute]?.name}</strong>
                         </TableCell>
                         <TableCell>
-                          <PositionValue position={item} property={property} />
+                          <PositionValue position={item} attribute={attribute} />
                         </TableCell>
                       </TableRow>
-                    ))}
-                {item &&
-                  Object.getOwnPropertyNames(item.attributes).map((attribute) => (
-                    <TableRow key={attribute}>
-                      <TableCell>{attribute}</TableCell>
-                      <TableCell>
-                        <strong>{positionAttributes[attribute]?.name}</strong>
-                      </TableCell>
-                      <TableCell>
-                        <PositionValue position={item} attribute={attribute} />
-                      </TableCell>
-                    </TableRow>
-                  ))}
+                    )
+                  })}
               </TableBody>
             </Table>
           </Paper>
