@@ -8,8 +8,8 @@ export default defineConfig(() => ({
   server: {
     port: 3000,
     proxy: {
-      '/api/socket': 'ws://tracker.zitronica.co.mz:8082',
-      '/api': 'http://tracker.zitronica.co.mz:8082',
+      '/api/socket': 'ws://tracker-server.zitronica.co.mz:8082',
+      '/api': 'http://tracker-server.zitronica.co.mz:8082',
     },
   },
   build: {
