@@ -1,4 +1,18 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
-  "outputDirectory": "build"
+  "outputDirectory": "build",
+  "rewrites": [
+    {
+      "source": "/api/(.*)",
+      "destination": "http://tracker-server.zitronica.co.mz:8082/api/$1"
+    },
+    {
+      "source": "/socket",
+      "destination": "http://tracker-server.zitronica.co.mz:8082/socket"
+    },
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
+    }
+  ]
 }
