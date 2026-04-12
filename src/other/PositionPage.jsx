@@ -36,8 +36,8 @@ const useStyles = makeStyles()((theme) => ({
   },
 }));
 
-const hiddenAttributes = { odometer: 1, speed: 1, rssi: 1, blocked: 1 };
-const renamedAttributes = { ignition: { attribute: 'tampAlert', name: 'Tamp alert' } };
+// const hiddenAttributes = { odometer: 1, speed: 1, rssi: 1, blocked: 1 };
+// const renamedAttributes = { ignition: { attribute: 'tampAlert', name: 'Tamp alert' } };
 
 const PositionPage = () => {
   const { classes } = useStyles();
@@ -96,9 +96,9 @@ const PositionPage = () => {
                   Object.getOwnPropertyNames(item)
                     .filter((it) => it !== 'attributes')
                     .map((property) => {
-                      if (hiddenAttributes[property]) {
-                        return null;
-                      }
+                      // if (hiddenAttributes[property]) {
+                      //   return null;
+                      // }
                       return (
                         <TableRow key={property}>
                           <TableCell>{property}</TableCell>
@@ -113,14 +113,16 @@ const PositionPage = () => {
                     })}
                 {item &&
                   Object.getOwnPropertyNames(item.attributes).map((attribute) => {
-                    if (hiddenAttributes[attribute]) {
-                      return null;
-                    }
+                    // if (hiddenAttributes[attribute]) {
+                    //   return null;
+                    // }
                     return (
                       <TableRow key={attribute}>
-                        <TableCell>{renamedAttributes[attribute] ? renamedAttributes[attribute].attribute : attribute}</TableCell>
+                        {/* <TableCell>{renamedAttributes[attribute] ? renamedAttributes[attribute].attribute : attribute}</TableCell> */}
+                        <TableCell>attribute</TableCell>
                         <TableCell>
-                          {renamedAttributes[attribute] ? renamedAttributes[attribute].name : <strong>{positionAttributes[attribute]?.name}</strong>}
+                          {/* {renamedAttributes[attribute] ? renamedAttributes[attribute].name : <strong>{positionAttributes[attribute]?.name}</strong>} */}
+                          <strong>{positionAttributes[attribute]?.name}</strong>
                         </TableCell>
                         <TableCell>
                           <PositionValue position={item} attribute={attribute} />
