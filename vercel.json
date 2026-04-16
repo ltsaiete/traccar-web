@@ -4,11 +4,11 @@
   "rewrites": [
     {
       "source": "/api/(.*)",
-      "destination": "http://tracker-server.zitronica.co.mz:8082/api/$1"
+      "destination": "https://tracker-server.zitronica.co.mz/api/$1"
     },
     {
       "source": "/socket",
-      "destination": "http://tracker-server.zitronica.co.mz:8082/socket"
+      "destination": "https://tracker-server.zitronica.co.mz/socket"
     },
     {
       "source": "/(.*)",
